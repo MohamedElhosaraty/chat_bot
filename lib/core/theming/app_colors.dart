@@ -8,9 +8,11 @@ class AppColors {
   static const Color lightGreen = Color(0xFF3ABF38);
   static const Color lightGrey = Color(0xFFECECEC);
   static const Color moreGrey = Color(0xFFA1A1A1);
-
-
-
+  static const Color lighterGrey = Color(0xFFEEEEEE);
+  static const Color darkGrey = Color(0xFF656565);
+  static const Color lighterBlack = Color(0xFF3F3F3F);
+  static const Color lightGrey2 = Color(0xFFF4F4F4);
+  static const Color lightBlack2 = Color(0xFF3E3E3E);
 
 
 
@@ -32,7 +34,6 @@ class AppColors {
   static const Color grey600 = Color(0xFF40403E);
   static const Color dark = Color(0xFF212121);
   static const Color green = Color(0xFF0B3631);
-  static const Color darkGrey = Color(0xFF808080);
   static const Color moreBlack = Color(0xFF0C0C0C);
   static const Color primaryColor2 = Color(0xFF1A201D);
   static const Color yellow = Color(0xFFFABF35);

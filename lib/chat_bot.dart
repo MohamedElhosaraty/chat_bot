@@ -15,7 +15,6 @@ class ChatBot extends StatelessWidget {
       splitScreenMode: true,
       child: MaterialApp(
         title: 'Chat Bot',
-
         theme: ThemeData(
           primaryColor: Colors.blue,
           colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
@@ -23,7 +22,6 @@ class ChatBot extends StatelessWidget {
         ),
         debugShowCheckedModeBanner: false,
         initialRoute: Routes.splashScreen,
-
         onGenerateRoute: AppRouter.generateRoute,
       ),
     );
