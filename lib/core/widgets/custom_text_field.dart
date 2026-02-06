@@ -39,6 +39,7 @@ class CustomTextField extends StatelessWidget {
       obscureText: isObscure ?? false,
       controller: textController,
       style: style,
+      minLines: 1,
       decoration: InputDecoration(
         counterText: '',
         fillColor: AppColors.background,
