@@ -1,3 +1,5 @@
+import 'package:chat_bot/feature/chat/data/model/chat_model.dart';
+import 'package:chat_bot/feature/chat/ui/cubit/chat_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -5,11 +7,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import '../../../../../core/widgets/custom_text_field.dart';
 import '../../../../core/theming/app_text_styles.dart';
 import '../../../../generated/assets.dart';
-import '../cubit/chat_cubit.dart';
 
 
 class CustomChatTextField extends StatefulWidget {
-  const CustomChatTextField({super.key,});
+  const CustomChatTextField({super.key, required this.messages,});
+
+  final List<ChatModel> messages;
 
   @override
   State<CustomChatTextField> createState() => _CustomChatTextFieldState();
@@ -58,7 +61,16 @@ class _CustomChatTextFieldState extends State<CustomChatTextField> {
                 onPressed: () {
                   if (textController.text.isNotEmpty) {
                     //FocusScope.of(context).unfocus();
-                    context.read<ChatCubit>().sendMessage(textController.text);
+                    final message =  ChatModel(
+
+                        parts: [
+                          Parts(text: textController.text),
+                        ],
+                        role: 'user'
+                    );
+                    context.read<ChatCubit>().sendMessage(
+                      messages: widget.messages..add(message),
+                    );
                     textController.clear();
                   }
                 },

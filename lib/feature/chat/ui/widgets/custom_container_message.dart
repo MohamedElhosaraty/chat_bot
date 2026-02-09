@@ -1,17 +1,16 @@
-import 'package:chat_bot/feature/chat_screen/presentation/widgets/custom_container_robot.dart';
+import 'package:chat_bot/feature/chat/ui/widgets/custom_container_robot.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/theming/app_colors.dart';
 import '../../../../core/theming/app_text_styles.dart';
-import '../cubit/chat_cubit.dart';
 
 class CustomContainerMessage extends StatelessWidget {
-  const CustomContainerMessage({super.key, required this.index, required this.isUser, });
+  const CustomContainerMessage({super.key, required this.index, required this.isUser, required this.text, });
 
   final int index;
   final bool isUser;
+  final String text;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +33,7 @@ class CustomContainerMessage extends StatelessWidget {
                 ),
               ),
               child: Text(
-                context.read<ChatCubit>().messages[index].text,
+                text,
                 style: AppTextStyles.font16Bold(
                   context,
                 ).copyWith(color: isUser ? AppColors.background : AppColors.darkGrey),

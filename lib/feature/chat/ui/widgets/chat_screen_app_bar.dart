@@ -1,5 +1,5 @@
-import 'package:chat_bot/feature/chat_screen/presentation/widgets/custom_action_app_bar.dart';
-import 'package:chat_bot/feature/chat_screen/presentation/widgets/custom_title_app_bar.dart';
+import 'package:chat_bot/feature/chat/ui/widgets/custom_action_app_bar.dart';
+import 'package:chat_bot/feature/chat/ui/widgets/custom_title_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
