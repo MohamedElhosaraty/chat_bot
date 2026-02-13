@@ -18,6 +18,7 @@ class ChatScreenBody extends StatefulWidget {
 }
 
 class _ChatScreenBodyState extends State<ChatScreenBody> {
+
   final ScrollController _scrollController = ScrollController();
   List<ChatModel> messages = [];
 

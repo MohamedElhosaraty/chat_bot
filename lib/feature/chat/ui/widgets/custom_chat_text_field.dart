@@ -62,7 +62,6 @@ class _CustomChatTextFieldState extends State<CustomChatTextField> {
                   if (textController.text.isNotEmpty) {
                     //FocusScope.of(context).unfocus();
                     final message =  ChatModel(
-
                         parts: [
                           Parts(text: textController.text),
                         ],

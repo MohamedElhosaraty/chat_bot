@@ -1,5 +1,5 @@
 import 'package:chat_bot/core/routing/routes.dart';
-import 'package:chat_bot/feature/chat_screen/presentation/page/chat_screen.dart';
+import 'package:chat_bot/feature/chat/ui/page/chat_screen.dart';
 import 'package:chat_bot/feature/onboarding/presentation/page/onboarding_screen.dart';
 import 'package:flutter/material.dart';
 

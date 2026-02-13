@@ -1,10 +1,9 @@
-import 'package:chat_bot/feature/chat_screen/data/repo_impl/repo_impl.dart';
-import 'package:chat_bot/feature/chat_screen/domain/repository/chat_repository.dart';
+import 'package:chat_bot/feature/chat/data/repo/gemini_chat_repo_impl.dart';
+import 'package:chat_bot/feature/chat/domain/chat_repo.dart';
 import 'package:get_it/get_it.dart';
 
-import '../../feature/chat_screen/data/data_source/chat_data_source.dart';
-import '../../feature/chat_screen/domain/usecase/chat_usecase.dart';
-import '../../feature/chat_screen/presentation/cubit/chat_cubit.dart';
+import '../../feature/chat/data/service/gemini_chat_service.dart';
+import '../../feature/chat/ui/cubit/chat_cubit.dart';
 import '../api/api_manager.dart';
 import '../api/dio_factory.dart';
 
@@ -17,36 +16,16 @@ Future<void> setupGetIt() async {
   );
 
   // 📦 Data Sources
-  getIt.registerLazySingleton<ChatRemoteDataSource>(
-    () => ChatRemoteDataSourceImpl(getIt<ApiManager>()),
+  getIt.registerLazySingleton<GeminiChatService>(
+    () => GeminiChatService(apiManager: getIt<ApiManager>()),
   );
-
 
   // 📚 Repositories
-  getIt.registerLazySingleton<ChatRepository>(
-    () => ChatRepositoryImpl(getIt<ChatRemoteDataSource>()),
+
+  getIt.registerLazySingleton<ChatRepo>(
+    () => GeminiChatRepoImpl(getIt<GeminiChatService>()),
   );
-
-
-  // ✅ Use Cases
-  getIt.registerLazySingleton<SendMessageUseCase>(
-    () => SendMessageUseCase(getIt<ChatRepository>()),
-  );
-
-
 
   // 🧠 Cubits
-  getIt.registerFactory<ChatCubit>(() => ChatCubit(getIt<SendMessageUseCase>()));
-  // getIt.registerFactory<SignUpCubit>(() => SignUpCubit(getIt<SignUpUsecase>()));
-  //
-  // getIt.registerFactory<HomeCubit>(
-  //   () => HomeCubit(getIt<HomeUsecase>()),
-  // );
-  //
-  // getIt.registerLazySingleton<SearchCubit>(
-  //   () => SearchCubit(getIt<SearchUsecase>()),
-  // );
-
-
-
+  getIt.registerFactory<ChatCubit>(() => ChatCubit(getIt<ChatRepo>()));
 }
