@@ -10,9 +10,10 @@ import '../../../../generated/assets.dart';
 
 
 class CustomChatTextField extends StatefulWidget {
-  const CustomChatTextField({super.key, required this.messages,});
+  const CustomChatTextField({super.key, required this.messages, required this.isFailure,});
 
   final List<ChatModel> messages;
+  final bool isFailure;
 
   @override
   State<CustomChatTextField> createState() => _CustomChatTextFieldState();
@@ -67,6 +68,9 @@ class _CustomChatTextFieldState extends State<CustomChatTextField> {
                         ],
                         role: 'user'
                     );
+                    if(widget.isFailure){
+                      widget.messages.removeLast();
+                    }
                     context.read<ChatCubit>().sendMessage(
                       messages: widget.messages..add(message),
                     );

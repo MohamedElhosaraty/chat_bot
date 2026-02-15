@@ -1,14 +1,12 @@
 import 'package:chat_bot/feature/chat/data/model/chat_model.dart';
 import 'package:chat_bot/feature/chat/ui/cubit/chat_cubit.dart';
 import 'package:chat_bot/feature/chat/ui/widgets/custom_chat_text_field.dart';
-import 'package:chat_bot/feature/chat/ui/widgets/custom_container_robot.dart';
 import 'package:chat_bot/feature/chat/ui/widgets/custom_help_screen.dart';
+import 'package:chat_bot/feature/chat/ui/widgets/custom_list_view_chat_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:lottie/lottie.dart';
 import '../../../../core/helpers/toast_helper.dart';
-import '../../../../generated/assets.dart';
-import 'custom_container_message.dart';
+
 
 class ChatScreenBody extends StatefulWidget {
   const ChatScreenBody({super.key});
@@ -30,7 +28,7 @@ class _ChatScreenBodyState extends State<ChatScreenBody> {
           messages.add(state.chatModel);
           WidgetsBinding.instance.addPostFrameCallback((_) {
             _scrollController.animateTo(
-              _scrollController.position.maxScrollExtent,
+              _scrollController.position.minScrollExtent,
               duration: const Duration(milliseconds: 300),
               curve: Curves.easeOut,
             );
@@ -53,39 +51,16 @@ class _ChatScreenBodyState extends State<ChatScreenBody> {
                         right: 0,
                         left: 0,
                         top: 0,
-                        child: ListView.builder(
-                          controller: _scrollController,
-                          padding: const EdgeInsets.only(bottom: 60),
-                          physics: const BouncingScrollPhysics(),
-                          itemCount:
-                              messages.length + (state is ChatLoading ? 1 : 0),
-                          itemBuilder: (context, index) {
-                            if (state is ChatLoading &&
-                                index == messages.length) {
-                              return Padding(
-                                padding: const EdgeInsets.only(left: 8.0),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.start,
-                                  children: [
-                                    CustomContainerRobot(),
-                                    Lottie.asset(
-                                      Assets.lottieLoading,
-                                      height: 80,
-                                      width: 80,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            }
-                            return CustomContainerMessage(
-                              text: messages[index].parts?[0].text ?? '',
-                              index: index,
-                              isUser: messages[index].role == 'user',
-                            );
-                          },
+                        child: CustomListViewChatBody(
+                            scrollController: _scrollController,
+                            messages: messages,
+                            isLoading: state is ChatLoading,
+                            isFailure: state is ChatFailure,
                         ),
                       ),
-                  CustomChatTextField(messages: messages),
+                  CustomChatTextField(
+                      messages: messages,
+                  isFailure: state is ChatFailure,),
                 ],
               ),
             );
