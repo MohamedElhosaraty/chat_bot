@@ -1,5 +1,5 @@
 import 'package:chat_bot/core/api/api_manager.dart';
-import 'package:chat_bot/core/error/failures.dart'; // تأكد من استيراد الـ Failure
+import 'package:chat_bot/core/error/failures.dart';
 import 'package:chat_bot/feature/chat/data/model/chat_model.dart';
 import 'package:chat_bot/feature/chat/data/service/gemini_chat_service.dart';
 import 'package:dio/dio.dart';
@@ -18,6 +18,7 @@ void main() {
   });
 
   group("GeminiChatService Retry Logic Tests", () {
+
     final messages = [
       ChatModel(parts: [Parts(text: 'Hello')], role: 'user'),
     ];
@@ -152,7 +153,6 @@ void main() {
           throw DioException(
             requestOptions: RequestOptions(path: '/test'),
             type: networkErrors[callCount - 1],
-            response: null,
           );
         }
         return successResponse;

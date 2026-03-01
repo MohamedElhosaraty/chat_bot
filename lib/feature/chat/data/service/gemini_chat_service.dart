@@ -46,7 +46,6 @@ class GeminiChatService {
     return e.type == DioExceptionType.connectionTimeout ||
         e.type == DioExceptionType.sendTimeout ||
         e.type == DioExceptionType.receiveTimeout ||
-        e.type == DioExceptionType.connectionError ||
-        (statusCode != null && statusCode >= 500);
+        e.type == DioExceptionType.connectionError ;
   }
 }
