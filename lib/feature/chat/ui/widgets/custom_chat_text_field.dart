@@ -59,6 +59,7 @@ class _CustomChatTextFieldState extends State<CustomChatTextField> {
                 ),
               ),
               IconButton(
+                key: const Key('sendButton') ,
                 onPressed: () {
                   if (textController.text.isNotEmpty) {
                     //FocusScope.of(context).unfocus();

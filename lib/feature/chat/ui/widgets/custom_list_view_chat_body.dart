@@ -35,6 +35,7 @@ class CustomListViewChatBody extends StatelessWidget {
               children: [
                 CustomContainerRobot(),
                 Lottie.asset(
+                  key: const Key('loadingChatScreen'),
                   Assets.lottieLoading,
                   height: 80,
                   width: 80,

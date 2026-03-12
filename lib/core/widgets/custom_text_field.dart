@@ -17,6 +17,7 @@ class CustomTextField extends StatelessWidget {
     this.keyboardType,
     this.suffixIcon,
     this.prefixIcon,
+    this.valueKey,
   });
 
   final TextEditingController? textController;
@@ -29,10 +30,12 @@ class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final TextInputType? keyboardType;
   final String? Function(String? value)? validator;
+  final Key? valueKey;
 
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      key:valueKey,
       keyboardType: keyboardType,
       maxLines: maxLines,
       maxLength: maxLength,

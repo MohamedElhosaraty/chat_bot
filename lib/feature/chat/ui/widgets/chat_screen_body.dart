@@ -27,11 +27,13 @@ class _ChatScreenBodyState extends State<ChatScreenBody> {
         if (state is ChatSuccess) {
           messages.add(state.chatModel);
           WidgetsBinding.instance.addPostFrameCallback((_) {
-            _scrollController.animateTo(
-              _scrollController.position.minScrollExtent,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeOut,
-            );
+            if (_scrollController.hasClients) {
+              _scrollController.animateTo(
+                _scrollController.position.minScrollExtent, // أو maxScrollExtent حسب رغبتك
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOut,
+              );
+            }
           });
         }
         if (state is ChatFailure) {

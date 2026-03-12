@@ -44,6 +44,7 @@ class CustomFailureContainer extends StatelessWidget {
             ),
             5.verticalSpace,
             InkWell(
+              key: const Key('tryAgain'),
               onTap: (){
                 context.read<ChatCubit>().sendMessage(
                   messages: messages,
