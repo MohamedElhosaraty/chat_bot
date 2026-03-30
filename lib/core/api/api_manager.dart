@@ -1,19 +1,21 @@
 import 'package:dio/dio.dart';
 
+import '../../config/app_config.dart';
 import '../networking/api_constants.dart';
 
 class ApiManager {
-  ApiManager({required this.dio});
-
+  final AppConfig appConfig;
   final Dio dio;
-  static const String baseUrl = 'https://generativelanguage.googleapis.com/';
+
+  ApiManager( {required this.dio,required this.appConfig});
+
 
   Future<Response> post({
     required String endPoint,
     required Map<String, dynamic> data,
   }) async {
     final response = await dio.post(
-      baseUrl + endPoint,
+      appConfig.baseUrl + endPoint,
       data: data,
       queryParameters: {
         'key': ApiConstants.apiKey,
@@ -25,7 +27,7 @@ class ApiManager {
 
   Future<Response> get({required String endPoint}) async {
     final response = await dio.get(
-      baseUrl + endPoint,
+      appConfig.baseUrl + endPoint,
     );
 
     return response;
@@ -33,7 +35,7 @@ class ApiManager {
 
   Future<Response> delete({required String endPoint,required Map<String, dynamic> data,}) async {
     final response = await dio.delete(
-      baseUrl + endPoint,
+      appConfig.baseUrl + endPoint,
       data: data,
 
     );
@@ -46,7 +48,7 @@ class ApiManager {
     required Map<String, dynamic> data,
   }) async {
     final response = await dio.patch(
-      baseUrl + endPoint,
+      appConfig.baseUrl + endPoint,
       data: data,
     );
 

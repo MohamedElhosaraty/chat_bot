@@ -30,6 +30,28 @@ android {
         versionName = flutter.versionName
     }
 
+    flavorDimensions += "environment"
+
+    productFlavors {
+        create("dev") {
+            dimension = "environment"
+            resValue("string", "app_name", "ChatBot Dev")
+            applicationIdSuffix = ".dev"
+        }
+
+        create("stag") {
+            dimension = "environment"
+            resValue("string", "app_name", "ChatBot Stag")
+            applicationIdSuffix = ".stag"
+        }
+
+        create("prod") {
+            dimension = "environment"
+            resValue("string", "app_name", "ChatBot Prod")
+            applicationIdSuffix = ".prod"
+        }
+    }
+
     buildTypes {
         release {
             // TODO: Add your own signing config for the release build.
