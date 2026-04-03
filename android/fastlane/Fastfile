@@ -1,0 +1,10 @@
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Analyze Flutter code"
+  lane :analyze do
+    sh "cd .. && flutter analyze"
+  end
+end
