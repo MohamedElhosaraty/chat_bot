@@ -17,13 +17,13 @@ jobs:
         with:
           java-version: '17'
           distribution: 'temurin'
-          cache: gradle
+          cache: "gradle"
 
       - name: Install Flutter
         uses: subosito/flutter-action@v2
         with:
           channel: stable
-          cache: true
+          cache: "true"
 
       - name: Get Flutter Dependencies
         run: flutter pub get
@@ -36,8 +36,5 @@ jobs:
           working-directory: android
 
       - name: Analyze Code
-        run: bundle exec fastlane android analyze
+        run: bundle exec fastlane validate_pr
         working-directory: android
-
-      - name: Build APK
-        run: flutter build apk --debug

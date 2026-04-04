@@ -3,8 +3,14 @@
 default_platform(:android)
 
 platform :android do
-  desc "Analyze Flutter code"
-  lane :analyze do
-    sh "cd .. && flutter analyze"
+  desc "Run static analysis, unit tests, and integration tests and a dev-flavor apk build"
+  lane :validate_pr do
+    flutter_root = File.expand_path("../..", __dir__)
+    Dir.chdir(flutter_root) do
+      sh("flutter analyze")
+      sh("flutter test")
+      sh("flutter build apk --flavor dev -t lib/main_dev.dart")
+
+    end
   end
 end

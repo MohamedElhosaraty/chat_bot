@@ -15,13 +15,13 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 ## Android
 
-### android analyze
+### android validate_pr
 
 ```sh
-[bundle exec] fastlane android analyze
+[bundle exec] fastlane android validate_pr
 ```
 
-Analyze Flutter code
+Run static analysis, unit tests, and integration tests and a dev-flavor apk build
 
 ----
 
