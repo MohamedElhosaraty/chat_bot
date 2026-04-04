@@ -5,12 +5,22 @@
     
     
       
-      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.0020003">
+      <testcase classname="fastlane.lanes" name="0: default_platform" time="0.002195">
         
       </testcase>
     
       
-      <testcase classname="fastlane.lanes" name="1: cd .. &amp;&amp; flutter analyze" time="2.4186503">
+      <testcase classname="fastlane.lanes" name="1: flutter analyze" time="9.8805001">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="2: flutter test" time="14.4675084">
+        
+      </testcase>
+    
+      
+      <testcase classname="fastlane.lanes" name="3: flutter build apk --flavor dev -t lib/main_dev.dart" time="193.1457518">
         
       </testcase>
     
