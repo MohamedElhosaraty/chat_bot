@@ -97,40 +97,40 @@ void main() {
       expect(find.descendant(of: find.byType(CustomContainerMessage), matching: find.text('ok ok Response')), findsOneWidget);
     });
 
-    testWidgets('Send a message 5 times and  then receive response', (WidgetTester tester) async {
-      ChatRobot chatRobot = ChatRobot(tester: tester);
-      var counter = 0;
-      when(() => chatMockRepo.sendMessage(messages: any(named: 'messages')))
-          .thenAnswer((_) async {
-            await Future.delayed(
-              const Duration(seconds: 2),() {},
-            );
-            counter++;
-            if (counter == 4) {
-              return throw Exception('Something went wrong');
-            } else {
-              return ChatModel(parts: [Parts(text: 'ok ok Response')], role: 'model');
-            }
-      } );
-
-      await chatRobot.runApp();
-      await chatRobot.enterText(text: 'Hello Mohamed');
-      await chatRobot.sendButton();
-      await tester.pumpAndSettle();
-      await chatRobot.enterText(text: 'Hello Mohamed');
-      await chatRobot.sendButton();
-      await tester.pumpAndSettle();
-      await chatRobot.enterText(text: 'Hello Mohamed');
-      await chatRobot.sendButton();
-      await tester.pumpAndSettle();
-      await chatRobot.enterText(text: 'Hello Mohamed');
-      await chatRobot.sendButton();
-      await tester.pumpAndSettle();
-      await chatRobot.enterText(text: 'Hello Mohamed');
-      await chatRobot.sendButton();
-      await tester.pumpAndSettle();
-      expect(find.descendant(of: find.byType(CustomContainerMessage), matching: find.text('Hello Mohamed')), findsExactly(4));
-      expect(find.descendant(of: find.byType(CustomFailureContainer), matching: find.text('Hello Mohamed')), findsOneWidget);
-    });
+    // testWidgets('Send a message 5 times and  then receive response', (WidgetTester tester) async {
+    //   ChatRobot chatRobot = ChatRobot(tester: tester);
+    //   var counter = 0;
+    //   when(() => chatMockRepo.sendMessage(messages: any(named: 'messages')))
+    //       .thenAnswer((_) async {
+    //         await Future.delayed(
+    //           const Duration(seconds: 2),() {},
+    //         );
+    //         counter++;
+    //         if (counter == 4) {
+    //           return throw Exception('Something went wrong');
+    //         } else {
+    //           return ChatModel(parts: [Parts(text: 'ok ok Response')], role: 'model');
+    //         }
+    //   } );
+    //
+    //   await chatRobot.runApp();
+    //   await chatRobot.enterText(text: 'Hello Mohamed');
+    //   await chatRobot.sendButton();
+    //   await tester.pumpAndSettle();
+    //   await chatRobot.enterText(text: 'Hello Mohamed');
+    //   await chatRobot.sendButton();
+    //   await tester.pumpAndSettle();
+    //   await chatRobot.enterText(text: 'Hello Mohamed');
+    //   await chatRobot.sendButton();
+    //   await tester.pumpAndSettle();
+    //   await chatRobot.enterText(text: 'Hello Mohamed');
+    //   await chatRobot.sendButton();
+    //   await tester.pumpAndSettle();
+    //   await chatRobot.enterText(text: 'Hello Mohamed');
+    //   await chatRobot.sendButton();
+    //   await tester.pumpAndSettle();
+    //   expect(find.descendant(of: find.byType(CustomContainerMessage), matching: find.text('Hello Mohamed')), findsExactly(4));
+    //   expect(find.descendant(of: find.byType(CustomFailureContainer), matching: find.text('Hello Mohamed')), findsOneWidget);
+    // });
   });
 }

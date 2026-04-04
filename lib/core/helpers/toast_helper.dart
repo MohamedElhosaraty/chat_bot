@@ -41,7 +41,9 @@ import '../theming/app_colors.dart';
         )
       ],
       showProgressBar: true,
-      closeButtonShowType: CloseButtonShowType.onHover,
+      closeButton: ToastCloseButton(
+        showType: CloseButtonShowType.onHover,
+      ),
       closeOnClick: false,
       pauseOnHover: true,
       dragToClose: true,
@@ -98,7 +100,9 @@ import '../theming/app_colors.dart';
         )
       ],
       showProgressBar: true,
-      closeButtonShowType: CloseButtonShowType.onHover,
+        closeButton: ToastCloseButton(
+          showType: CloseButtonShowType.onHover,
+        ),
       closeOnClick: false,
       pauseOnHover: true,
       dragToClose: true,
