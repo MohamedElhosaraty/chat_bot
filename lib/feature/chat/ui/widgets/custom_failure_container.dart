@@ -20,7 +20,7 @@ class CustomFailureContainer extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 22, vertical: 18),
         decoration: BoxDecoration(
-          color: AppColors.red.withOpacity(0.2),
+          color: AppColors.red.withValues(alpha: 0.2),
           border: Border.all(color: AppColors.red),
           borderRadius: BorderRadius.circular(
             20.r,

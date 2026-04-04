@@ -35,8 +35,7 @@ class _CustomChatTextFieldState extends State<CustomChatTextField> {
           borderRadius: BorderRadius.circular(30.r),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withOpacity(0.13),
-              offset: const Offset(5, 4),
+              color: Colors.black.withValues(alpha: 0.13),              offset: const Offset(5, 4),
               blurRadius: 20,
               spreadRadius: 0,
             ),
