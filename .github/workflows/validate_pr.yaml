@@ -25,9 +25,6 @@ jobs:
           channel: stable
           cache: "true"
 
-      - name: Get Flutter Dependencies
-        run: flutter pub get
-
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
@@ -36,5 +33,5 @@ jobs:
           working-directory: android
 
       - name: Analyze Code
-        run: bundle exec fastlane validate_pr
         working-directory: android
+        run: bundle exec fastlane validate_pr
