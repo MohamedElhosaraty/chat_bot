@@ -7,6 +7,7 @@ import 'core/di/dependency_injection.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'core/observer/bloc_observer.dart';
 
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   SystemChrome.setSystemUIOverlayStyle(
