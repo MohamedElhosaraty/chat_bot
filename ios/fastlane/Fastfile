@@ -10,7 +10,7 @@ platform :ios do
       sh("flutter pub get")
       sh("flutter analyze")
       sh("flutter test")
-      sh("flutter build ios --flavor dev -t lib/main_dev.dart --no-codesign")
+      sh("flutter build ios --no-codesign")
 
     end
   end
