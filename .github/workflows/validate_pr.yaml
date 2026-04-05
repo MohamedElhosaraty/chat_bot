@@ -35,3 +35,28 @@ jobs:
       - name: Analyze Code
         working-directory: android
         run: bundle exec fastlane validate_pr
+
+
+  build_ios:
+    runs-on: macos-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Install Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+          cache: "true"
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: "3.3.4"
+          bundler-cache: true
+          working-directory: ios
+
+      - name: Analyze Code
+        working-directory: ios
+        run: bundle exec fastlane validate_pr
