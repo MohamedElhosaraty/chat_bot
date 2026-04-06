@@ -32,10 +32,13 @@ jobs:
           bundler-cache: true
           working-directory: android
 
+      - name: Install Bundle Dependencies
+        run: bundle install
+        working-directory: android
+
       - name: Analyze Code
         working-directory: android
         run: bundle exec fastlane validate_pr
-
 
   build_ios:
     runs-on: macos-latest
@@ -56,6 +59,14 @@ jobs:
           ruby-version: "3.3.4"
           bundler-cache: true
           working-directory: ios
+
+      - name: Install Bundle Dependencies
+        run: bundle install
+        working-directory: ios
+
+      - name: Pod Install
+        run: bundle exec pod install
+        working-directory: ios
 
       - name: Analyze Code
         working-directory: ios
