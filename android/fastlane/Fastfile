@@ -24,7 +24,7 @@ platform :android do
 
     apk_path = File.join(flutter_root, "build", "app", "outputs", "flutter-apk", "app-dev-release.apk")
     firebase_app_distribution(
-      app: "1:624493250471:android:1d207c334afad203405882",
+      app: "1:624493250471:android:8443e2ffcd48214a405882",
       firebase_cli_token: ENV.fetch("FIREBASE_CLI_TOKEN"),
       groups: "testers",
       android_artifact_type: "APK",
