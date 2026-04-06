@@ -25,7 +25,9 @@ platform :android do
       app: "1:624493250471:android:1d207c334afad203405882",
       firebase_cli_token: ENV.fetch("FIREBASE_CLI_TOKEN"),
       groups: "testers",
-      android_artifact_path: "../build/app/outputs/bundle/devRelease/app-dev-release.aab",
+      android_artifact_type: "AAB",
+      release_notes: "First Fastlane Firebase Distribution",
+      android_artifact_path: "../../build/app/outputs/bundle/devRelease/app-dev-release.aab",
     )
   end
 end
