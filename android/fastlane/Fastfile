@@ -11,10 +11,8 @@ platform :android do
       sh("flutter analyze")
       sh("flutter test")
       sh("flutter build apk --flavor dev -t lib/main_dev.dart")
-
     end
   end
-end
 
   desc "build the release appbundle and upload to firebase app distribution"
   lane :distribute_release_to_firebase do
@@ -31,4 +29,3 @@ end
     )
   end
 end
-
