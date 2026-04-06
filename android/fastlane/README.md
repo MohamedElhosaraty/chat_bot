@@ -23,6 +23,14 @@ For _fastlane_ installation instructions, see [Installing _fastlane_](https://do
 
 Run static analysis, unit tests, and integration tests and a dev-flavor apk build
 
+### android distribute_release_to_firebase
+
+```sh
+[bundle exec] fastlane android distribute_release_to_firebase
+```
+
+build the release appbundle and upload to firebase app distribution
+
 ----
 
 This README.md is auto-generated and will be re-generated every time [_fastlane_](https://fastlane.tools) is run.

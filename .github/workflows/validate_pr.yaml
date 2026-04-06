@@ -33,6 +33,24 @@ jobs:
           bundler-cache: true
           working-directory: android
 
+
+      - name: Prepare android signing
+        env:
+          KEY_PASSWORD: ${{ secrets.KEY_PASSWORD }}
+          STORE_PASSWORD: ${{ secrets.STORE_PASSWORD }}
+          STORE_FILE_BASE64: ${{ secrets.STORE_FILE_BASE64 }}
+          KEY_ALIAS: ${{ secrets.KEY_ALIAS }}
+        run: |
+          set -e
+          printf "%s" "$STORE_FILE_BASE64" | base64 --decode > android/upload-keystore.jks
+          {
+            echo "storePassword=${STORE_PASSWORD}"
+            echo "keyPassword=${KEY_PASSWORD}"
+            echo "keyAlias=${KEY_ALIAS}"
+            echo "storeFile=../upload-keystore.jks"
+          } > android/key.properties
+
+
       - name: Analyze Code
         working-directory: android
         run: bundle exec fastlane validate_pr
