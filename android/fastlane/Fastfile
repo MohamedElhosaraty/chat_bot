@@ -23,12 +23,12 @@ end
       sh("flutter pub get")
       sh("flutter build appbundle --flavor dev -t lib/main_dev.dart")
     end
-
     firebase_app_distribution(
       app: "1:624493250471:android:1d207c334afad203405882",
       firebase_cli_token: ENV.fetch("FIREBASE_CLI_TOKEN"),
       groups: "testers",
       android_artifact_path: "../build/app/outputs/bundle/devRelease/app-dev-release.aab",
+    )
   end
 end
 
