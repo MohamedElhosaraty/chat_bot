@@ -32,4 +32,23 @@ platform :android do
       android_artifact_path: apk_path
     )
   end
+
+  desc "build the release apk and upload to firebase app distribution for prod"
+  lane :distribute_prod_to_firebase do
+    flutter_root = File.expand_path("../..", __dir__)
+    Dir.chdir(flutter_root) do
+      sh("flutter pub get")
+      sh("flutter build apk --flavor prod -t lib/main_prod.dart")
+    end
+
+    apk_path = File.join(flutter_root, "build", "app", "outputs", "flutter-apk", "app-prod-release.apk")
+    firebase_app_distribution(
+      app: "1:624493250471:android:b7227796a71bcba4405882",
+      firebase_cli_token: ENV.fetch("FIREBASE_CLI_TOKEN"),
+      groups: "testers",
+      android_artifact_type: "APK",
+      release_notes: "Prod Release",
+      android_artifact_path: apk_path
+    )
+  end
 end
