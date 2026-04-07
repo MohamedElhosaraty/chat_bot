@@ -45,7 +45,7 @@ platform :android do
     firebase_app_distribution(
       app: "1:624493250471:android:b7227796a71bcba4405882",
       firebase_cli_token: ENV.fetch("FIREBASE_CLI_TOKEN"),
-      groups: "testers",
+      groups: "prod",
       android_artifact_type: "APK",
       release_notes: "Prod Release",
       android_artifact_path: apk_path
